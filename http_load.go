@@ -4,9 +4,10 @@ import (
 	"os"
 	"time"
 
+	"net/http"
+
 	"github.com/google/uuid"
 	vegeta "github.com/tsenart/vegeta/lib"
-	"net/http"
 )
 
 func customTargeter() vegeta.Targeter {
@@ -17,7 +18,7 @@ func customTargeter() vegeta.Targeter {
 
 		tgt.Method = "POST"
 
-		tgt.URL = "http://localhost:8000/request"
+		tgt.URL = "http://localhost:8080/request"
 		merchantTransactionID := uuid.New().String()
 		payload := `{
   "id": "` + merchantTransactionID + `",
